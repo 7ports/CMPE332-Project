@@ -22,7 +22,9 @@
         $endDate = $_POST["endDate"];
         $supplierName = $_POST["supplierName"];
 
-        $dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", "");
+        #$dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", "");
+        include('connect-db.php');
+
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{
             $dbh->exec("INSERT INTO `Movie` (`Title`, `RunningTime`, `Rating`, `PlotSynopsis`, `DirectorFName`, `DirectorLName`, `ProductionCompany`, `StartDate`, `EndDate`, `SupplierName`) VALUES ('$movieTitle', '$runningTime', '$rating', '$plotSynopsis', '$directorFName', '$directorLName', '$productionCompany', '$startDate', '$endDate', '$supplierName')");

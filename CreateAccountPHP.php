@@ -26,7 +26,9 @@
 
         echo $accountNum;
 
-        $dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", "");
+        #$dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", "");
+        include('connect-db.php');
+
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{
             $dbh->exec("INSERT INTO `Customer` (`Fname`, `Lname`, `addressNum`, `street`, `city`, `Prov`, `Country`, `PC`, `phoneNumber`, `Email`, `AccountNum`, `Password`, `creditCardNum`, `creditCardExpiryDate`) VALUES ('$fName', '$lName', '$addressNum', '$street', '$city', '$prov', '$$country', '$PC', '$phoneNum', '$inputEmail', $accountNum, '$inputPassword', '$CCNumber', '$CCDate')");

@@ -1,52 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-* {
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Style the top navigation bar */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-}
-
-/* Style the topnav links */
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Style the content */
-.content {
-    background-color: #ddd;
-    padding: 10px;
-    height: 200px; /* Should be removed. Only for demonstration */
-}
-
-/* Style the footer */
-.footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-}
-</style>
+<head><link href="scss/movie.css" type="text/css" rel="stylesheet" >
 
 </head>
 <div class="topnav">
@@ -88,6 +42,18 @@ body {
 
         <div class="w3-sidebar w3-bar-block w3-black w3-card" style="width:130px">
             <h5 class="w3-bar-item">Menu</h5>
+            <?php
+			include('connect-db.php');
+
+            $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+  
+            foreach($rows as $row){
+            	echo "<button class=\"w3-bar-item w3-button tablink\" onclick=\"openLink(event, '$row[1]')\">";
+				echo "$row[1]";
+				echo "</button>";
+			}
+			?>
+
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Members')">Members</button>
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Movies')">Movies</button>
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Theatres')">Movie Theatres</button>
@@ -95,7 +61,7 @@ body {
         </div>
                 <div style="margin-left:130px">
 
-            <div id="Members" class="w3-container city w3-animate-opacity" style="display:none">
+            <div id="The Movie Movie" class="w3-container city w3-animate-opacity" style="display:none">
                 <h2>Manage Members</h2>
 
                 <table>

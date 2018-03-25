@@ -11,7 +11,8 @@
 */
 
 
-    $dbh = new PDO('mysql:host=localhost;dbname=movietheatres',"root","");
+    #$dbh = new PDO('mysql:host=localhost;dbname=movietheatres',"root","");
+    include('connect-db.php');
 
 
 

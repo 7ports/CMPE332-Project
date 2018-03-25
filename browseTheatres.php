@@ -26,30 +26,12 @@
 }
 </style>
 
-<h1>My first PHP page</h1>
-<a href = "browseTheatres.html">Browse Movies </a>
-
-<h1>Made it!</h1>
 
 
-<?php
-# practice
-echo "Hello World!!!!!"."<br>" ;
-include('connect-db.php');
+<h1>Browse Movies</h1>
 
-#$dbh = new PDO('mysql:host=localhost;dbname=MovieTheatres',"root","root");
-$temp = "Some";
-$rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+<a href = "movie.php">Browse Movies </a>
 
-#echo $rows;
-
-foreach($rows as $row){
-	echo "<div style ='font:11px/21px Arial,tahoma,sans-serif;color:#ff0000'> $row[1] $row[0]   $row[2]  </div>";
-}
-
-
-$dbh = null;
-?>
      <table id = "movies">
          <tr>
              <th>Name</th>
@@ -57,21 +39,21 @@ $dbh = null;
              <th>Time</th>
          </tr>
 		<!--tr onclick="window.location='anotherPage.php';"-->
-			<!--a href="anotherPage.php" --> 
             <?php
-            $dbh = new PDO('mysql:host=localhost;dbname=MovieTheatres',"root","root");
+			include('connect-db.php');
 
             $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
-            echo "<tr onclick="window.location='anotherPage.php';">";
   
             foreach($rows as $row){
-				echo "<td>  $row[1] </td> <td>$row[0]  </td> <td>$row[2]  </td>";
+            	echo "<tr>";
+				echo "<td>  <a href= '$row[1].php' >$row[1] </a></td> <td>$row[0]  </td> <td>$row[2]  </td>";
+				echo "</tr>";
 			}
-			echo "</tr>";
 			?>
-         <!-- /a -->
      </tr>
      </table>
+ 
+
 
 </body>
 </html>
