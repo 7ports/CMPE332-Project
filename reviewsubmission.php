@@ -21,7 +21,7 @@ echo $comments;
 echo $accnum;
 echo rand();
 
-$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+include('connect-db.php');
 
 try{
 $dbh->exec("INSERT INTO customerreview (ID, Rating, Text, CustomerAccountNum, MovieTitle) VALUES (rand(), '$rating', '$comments', '$accnum', '$moviename')");

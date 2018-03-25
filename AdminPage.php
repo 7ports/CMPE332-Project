@@ -11,7 +11,8 @@
 */
 
 
-    $dbh = new PDO('mysql:host=localhost;dbname=movietheatres',"root","");
+    #$dbh = new PDO('mysql:host=localhost;dbname=movietheatres',"root","");
+    include('connect-db.php');
 
 
 
@@ -76,7 +77,7 @@
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Account Number</th>
-                            <th>Delete Account</th>
+                            <!--                            <th>Delete Account</th>-->
                         </tr>
                     </thead>
                     <tbody>
@@ -93,23 +94,100 @@
                             echo "<td>".$row[0]."</td>";
                             echo "<td>".$row[1]."</td>";
                             echo "<td>".$row[2]."</td>";
-                            /*echo "<td><input type="button" value="Delete" onClick="window.location.href='mail.php'"></td>";
-                            echo "</tr>";*/
-
-
+                            //                            echo "<td><input type=\"button\" class=\"button\" name=\"deleteuser\" value=\"Remove Account\"</input></td>";
+                            echo "</tr>";
                         }
+
+
+
                         $dbh = null;
                         ?>
+
+                        <script type="text/javascript">
+                            function confSubmit(form) {
+                                if(confirm("Delete this record?")){
+                                    form.submit();
+                                } else{
+                                }
+                            }
+                        </script>
                     </tbody>
 
                 </table>
+                <div>
+                    <h2>Delete Account</h2>
+                    <form action="/CMPE332-Project/DeleteAccountPHP.php" method="post">
+                        <div class="form-group">
+                            <label for="DeleteInput">Account Number</label>
+                            <input type="number" class="form-control" name="DeleteInput" placeholder="Account Number">
+                        </div>
+                        <button type="submit" class="btn btn-default">Delete Account</button>
+                    </form>
 
+                </div>
             </div>
 
             <div id="Movies" class="w3-container city w3-animate-left" style="display:none">
                 <h2>Manage Movies</h2>
-                <p>Paris is the capital of France.</p> 
-                <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
+                <!--Create Account Page-->
+                <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+
+                <form action="/CMPE332-Project/CreateMoviePHP.php" method="post">
+
+                    <div class="form-group">
+                        <label for="movieTitle">Movie Title</label>
+                        <input type="text" class="form-control" name="movieTitle" placeholder="Movie Title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="runningTime">Running Time</label>
+                        <input type="number" class="form-control" name="runningTime" placeholder="Running Time">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <input type="text" class="form-control" name="rating" placeholder="Rating">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plotSynopsis">Plot Synopsis</label>
+                        <input type="text" class="form-control" name="plotSynopsis" placeholder="Plot Synopsis">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="directorFName">Director First Name</label>
+                        <input type="text" class="form-control" name="directorFName" placeholder="First Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="directorLName">Director Last Name</label>
+                        <input type="text" class="form-control" name="directorLName" placeholder="Last Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productionCompany">Production Company</label>
+                        <input type="text" class="form-control" name="productionCompany" placeholder="Production Company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" class="form-control" name="startDate" placeholder="Start Date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" class="form-control" name="endDate" placeholder="End Date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="supplierName">Supplier Name</label>
+                        <input type="text" class="form-control" name="supplierName" placeholder="Supplier Name">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Submit</button>
+
+                </form>
+
             </div>
 
             <div id="Theatres" class="w3-container city w3-animate-top" style="display:none">
@@ -123,7 +201,10 @@
                 <p>London is the capital city of England.</p>
                 <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
             </div>
+
         </div>
+
+
 
         <script>
             function openLink(evt, animName) {

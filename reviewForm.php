@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html><head><link href="scss/movie.css" type="text/css" rel="stylesheet" >
+</head>
 <body>
 
 <h1>MovieTheaters</h1>
