@@ -5,7 +5,7 @@
 <h1>My first PHP page</h1>
 <a href = "reviewForm.php">Leave a Review </a>
 
-<h1>Made it!</h1>
+
 
 
 <?php

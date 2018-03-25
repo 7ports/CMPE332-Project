@@ -13,7 +13,7 @@ $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
 
-$dbh = new PDO('mysql:host=localhost;dbname=movietheatres',"root","");
+$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
