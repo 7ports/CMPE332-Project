@@ -9,14 +9,10 @@
         session_start();
         $_SESSION["accnum"] = "0";
         ?>
-
+        
+        <h1>CREATE NEW ACCOUNT</h1>
 
         <form action="/CMPE332-Project/CreateAccountPHP.php" method="post">
-            
-            <div class="form-group">
-                <label for="accountNum">Account Number</label>
-                <input type="number" class="form-control" name="accountNum" placeholder="Account Number">
-            </div>
             
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
@@ -66,7 +62,7 @@
             <button type="submit" class="btn btn-default">Submit</button>
 
             <button type="button" class="btn btn-default"> 
-                <a href = "index.php.">Back</a>
+                <a href = "openingpage.php">Back</a>
             </button>
 
         </form>
