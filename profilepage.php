@@ -13,7 +13,7 @@ $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
 
-$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+include('connect-db.php');
 
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -54,7 +54,7 @@ $_SESSION["failed"] = "no";
 	</tr>
 	<?php
 	
-	$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+	include('connect-db.php');
 
 	try{
 	$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -87,7 +87,7 @@ $_SESSION["failed"] = "no";
 	</tr>
 <?php
 	$accnum = $_SESSION["accnum"];
-	$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+	include('connect-db.php');
 
 	try{
 	$check = $dbh->query("SELECT AccountNum FROM customer WHERE Email = '$email'");
@@ -121,16 +121,6 @@ $_SESSION["failed"] = "no";
 	}
 	?>
 </table>
-
-
-
-
-
-
-
-
-
-
 
 
 
