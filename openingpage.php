@@ -18,11 +18,18 @@
 		
 		
 	</form>
+<?php
+session_start();
+$status = $_SESSION["failed"];
+
+if ($status == "yes"){
+	echo "Invalid Login Info!"; 
+}
+?>
 
 
-
-
-<a href = "CreateAccountPage.php">Sign Up </a>
+<br>
+<a href = "CreateAccountPage.php">Don't have an account? Sign Up! </a>
 
 </body>
 </html>
