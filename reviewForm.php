@@ -7,10 +7,7 @@
 
 <h1>ReviewForm</h1>
 
-<?php
-session_start();
-$_SESSION["accnum"] = "0";
-?>
+
 <form action = "/CMPE332-Project/reviewsubmission.php" method = "post" id = "reviewform">
   Movie: <input type = "text" name = "movie">
   <br>
