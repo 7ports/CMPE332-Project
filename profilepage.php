@@ -33,19 +33,40 @@ if ($rows->fetchColumn(10) != $password){
 	header("Location:openingpage.php");
 	exit;
 } 
+
+
 	
 $_SESSION["failed"] = "no";
 	
-	
-	
-	
-
-
-
-
-
-
 ?>
+
+
+<table>
+	<tr>
+		<th>Firstname</th>
+		<th>Lastname</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>Account Number</th>
+		<th>Credit Card</th>
+		<th>Email</th>
+	</tr>
+	<tr>
+		<td><?php echo $rows->fetchColumn(0) ?></td>
+		<td><?php echo $rows->fetchColumn(1) ?></td>
+		<td><?php echo $rows->fetchColumn(2) . $rows->fetchColumn(3) . $rows->fetchColumn(4) . $rows->fetchColumn(5) . $rows->fetchColumn(6) . $rows->fetchColumn(7)?></td>
+		<td><?php echo $rows->fetchColumn(8) ?></td>
+		<td><?php echo $rows->fetchColumn(9) ?></td>
+		<td><?php echo $rows->fetchColumn(11) ?></td>
+		<td><?php echo $email ?></td>
+	</tr>
+</table>
+
+
+
+
+
+
 
 
 
