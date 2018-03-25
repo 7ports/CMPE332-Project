@@ -34,13 +34,14 @@ if ($rows->fetchColumn(10) != $password){
 	exit;
 } 
 
+$_SESSION["accnum"] = $rows->fetchColumn(9);
 
 	
 $_SESSION["failed"] = "no";
 	
 ?>
 
-
+<h2>Your Info</h2>
 <table>
 	<tr>
 		<th>Firstname</th>
@@ -51,16 +52,76 @@ $_SESSION["failed"] = "no";
 		<th>Credit Card</th>
 		<th>Email</th>
 	</tr>
-	<tr>
-		<td><?php echo $rows->fetchColumn(0) ?></td>
-		<td><?php echo $rows->fetchColumn(1) ?></td>
-		<td><?php echo $rows->fetchColumn(2) . $rows->fetchColumn(3) . $rows->fetchColumn(4) . $rows->fetchColumn(5) . $rows->fetchColumn(6) . $rows->fetchColumn(7)?></td>
-		<td><?php echo $rows->fetchColumn(8) ?></td>
-		<td><?php echo $rows->fetchColumn(9) ?></td>
-		<td><?php echo $rows->fetchColumn(11) ?></td>
-		<td><?php echo $email ?></td>
-	</tr>
+	<?php
+	
+	$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
+	try{
+	$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
+	} catch(PDOexception $e){
+	print "Error!: " . $e->getMessage()."<br/>";
+	die();
+	}
+	
+	foreach($rows as $row){
+	echo "<tr>
+		<td>".$row[0]."</td>
+		<td>".$row[1]."</td>
+		<td>".$row[2]." ".$row[3]." ".$row[4]." ".$row[5]." ".$row[6]." ".$row[7]."</td>
+		<td>".$row[8]."</td>
+		<td>".$row[9]."</td>
+		<td>".$row[11]."</td>
+		<td>".$email."</td>
+	</tr>";
+	}
+	?>
 </table>
+<h3>Your Reservations</h3>
+<table>
+	<tr>
+		<th>Time</th>
+		<th>Date</th>
+		<th>Movie</th>
+		<th>Theatre</th>
+		<th>Number of Tickets</th>
+	</tr>
+<?php
+	$accnum = $_SESSION["accnum"];
+	$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
+	try{
+	$check = $dbh->query("SELECT AccountNum FROM customer WHERE Email = '$email'");
+	} catch(PDOexception $e){
+	print "Error!: " . $e->getMessage()."<br/>";
+	die();
+	}
+	
+	foreach($check as $checks){
+		$accnum = $checks[0];
+	}
+	
+	try{
+	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
+	} catch(PDOexception $e){
+	print "Error!: " . $e->getMessage()."<br/>";
+	die();
+	}
+	
+	
+	
+	
+	foreach($rows as $row){
+	echo "<tr>
+		<td>".$row[0]."</td>
+		<td>".$row[1]."</td>
+		<td>".$row[2]."</td>
+		<td>"."Number ".$row[3]." At ".$row[4]."</td>
+		<td>".$row[5]."</td>
+	</tr>";
+	}
+	?>
+</table>
+
 
 
 
