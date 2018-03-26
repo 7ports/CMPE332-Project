@@ -15,12 +15,20 @@ $rating = $_POST["rating"];
 $comments = $_POST["comment"];
 $accnum = $_SESSION["accnum"];
 
+<<<<<<< HEAD
 echo "<br>";
 echo "Movie: $moviename<br>";
 echo "Rating: $rating<br>";
 echo "Comments: $comments<br>";
 echo "Account: $accnum<br>";
 echo "Review ID: ".rand();
+=======
+echo $moviename;
+echo $rating;
+echo $comments;
+echo $accnum;
+echo rand(10000,99999);
+>>>>>>> 328ec593d1a54e37c357e0923c60ad0b64c62be3
 
 include('connect-db.php');
 
