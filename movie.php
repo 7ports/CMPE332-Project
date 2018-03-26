@@ -22,7 +22,6 @@
 		include('connect-db.php');
 		$rows = $dbh->query("select distinct movie.startDate, movie.title from movie inner join showing on title = movietitle");
 
-
 	    $_SESSION["failed"] = "no";
     ?>
 

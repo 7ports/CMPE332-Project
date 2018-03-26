@@ -11,6 +11,31 @@
 
   <a href="reviewForm.php">Review a Movie</a>
 </div>
+<style>
+#info {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#info td, #info th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#info tr:nth-child(even){background-color: #f1f1f1;}
+
+#info tr:hover {background-color: #ddd;}
+
+#info th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}
+</style>
+
 <body>
 
 <h1>Your Profile</h1>
@@ -23,26 +48,11 @@ session_start();
 $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 328ec593d1a54e37c357e0923c60ad0b64c62be3
 if($email == NULL){
-	echo "using session";
 	$email = $_SESSION["email"];
 	$password = $_SESSION["pwrd"];
 }
-<<<<<<< HEAD
 
-
-//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
-=======
-
-
-
-//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
-
->>>>>>> 328ec593d1a54e37c357e0923c60ad0b64c62be3
 include('connect-db.php');
 
 
@@ -76,7 +86,7 @@ $_SESSION["failed"] = "no";
 ?>
 
 <h2>Your Info</h2>
-<table>
+<table id="info">
 	<tr>
 		<th>Firstname</th>
 		<th>Lastname</th>
@@ -116,7 +126,7 @@ $_SESSION["failed"] = "no";
 	?>
 </table>
 <h3>Your Reservations</h3>
-<table>
+<table id="info">
 	<tr>
 		<th>Time</th>
 		<th>Date</th>

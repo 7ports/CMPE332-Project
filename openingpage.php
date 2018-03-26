@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+	<link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
+
+	<link href="scss/header.css" type="text/css" rel="stylesheet" >
+</head>
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="browseTheatres.php">Browse Theatres</a>
+</div>
 <body>
 
 <h1>Login or sign up!</h1>
 
-	<form action="/CMPE332-Project/ProfilePage.php" method="post">
+	<form class="accountForm" action="/CMPE332-Project/ProfilePage.php" method="post">
 		<label for="email">Email address</label>
-        <input type="text" name="email" placeholder="Email">
+        <input class="input-box" type="text" name="email" placeholder="Email">
 		<br>
 		<label for="pwrd">Password</label>
-        <input type="password" name="pwrd" placeholder="Password">
+        <input class="input-box" type="password" name="pwrd" placeholder="Password">
 		<br>
 		<button type="submit" class="btn btn-default">Login</button>
 		

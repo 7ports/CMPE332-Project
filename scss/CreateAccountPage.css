@@ -15,4 +15,12 @@
     .form-row-margin {
       margin: 40px 0 40px 0;
     }
+
   }
+input {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;
+}
