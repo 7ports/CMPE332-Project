@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head><link href="scss/movie.css" type="text/css" rel="stylesheet" >
-
+<head>
+	<link href="scss/header.css" type="text/css" rel="stylesheet" >
 </head>
+<!-- navigation bar -->
 <div class="topnav">
   <a href="browseTheatres.php">Browse Theatres</a>
   <a href="CreateAccountPage.php">Create Account</a>

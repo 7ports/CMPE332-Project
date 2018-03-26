@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link href="scss/header.css" type="text/css" rel="stylesheet" >
+
+    </head>
+
+<div class="topnav">
+  <a href="browseTheatres.php">Browse Theatres</a>
+  <a href="CreateAccountPage.php">Create Account</a>
+  <a href="reviewForm.php">Review a Movie</a>
+</div>
+
 <body>
 <style>
 #movies {

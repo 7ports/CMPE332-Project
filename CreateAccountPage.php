@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <body>
+    <head>
+        <link href="scss/header.css" type="text/css" rel="stylesheet" >
+        <link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
+        <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+
+    </head>
+
+<div class="topnav">
+  <a href="browseTheatres.php">Browse Theatres</a>
+  <a href="CreateAccountPage.php">Create Account</a>
+  <a href="reviewForm.php">Review a Movie</a>
+</div>
+<body>
 
         <!--Create Account Page-->
-        <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
 
         <?php
         session_start();
@@ -12,7 +23,7 @@
         
         <h1>CREATE NEW ACCOUNT</h1>
 
-        <form action="/CMPE332-Project/CreateAccountPHP.php" method="post">
+        <form class="accountForm" action="/CMPE332-Project/CreateAccountPHP.php" method="post">
             
             <div class="form-group">
                 <label for="inputEmail">Email address</label>

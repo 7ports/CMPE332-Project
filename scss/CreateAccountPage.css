@@ -1,4 +1,4 @@
-  .reviewMovie {
+  .accountForm {
     max-width: 700px;
     margin: auto;
     border: 1px solid black;
@@ -6,9 +6,7 @@
 
     background: #FFFFFF;
     border-radius: 3px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
+    box-shadow: 0 10px 10px #888888;
     border: 1px solid $grey;
 
     #appointmentInformation {
