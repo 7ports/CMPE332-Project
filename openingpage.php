@@ -4,9 +4,6 @@
 
 <h1>Login or sign up!</h1>
 
-
-
-
 	<form action="/CMPE332-Project/ProfilePage.php" method="post">
 		<label for="email">Email address</label>
         <input type="text" name="email" placeholder="Email">

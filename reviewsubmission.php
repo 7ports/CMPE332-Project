@@ -3,7 +3,7 @@
 <body>
 
 <h1>My first PHP page</h1>
-<a href = "reviewForm.php">Leave a Review </a>
+<a href = "reviewForm.php">Leave a Review</a>
 
 
 
@@ -15,11 +15,12 @@ $rating = $_POST["rating"];
 $comments = $_POST["comment"];
 $accnum = $_SESSION["accnum"];
 
-echo $moviename;
-echo $rating;
-echo $comments;
-echo $accnum;
-echo rand();
+echo "<br>";
+echo "Movie: $moviename<br>";
+echo "Rating: $rating<br>";
+echo "Comments: $comments<br>";
+echo "Account: $accnum<br>";
+echo "Review ID: ".rand();
 
 include('connect-db.php');
 
