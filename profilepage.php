@@ -23,16 +23,16 @@ session_start();
 $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
-<<<<<<< HEAD
+
 if($email == NULL){
 	$email = $_SESSION["email"];
 	$password = $_SESSION["pwrd"];
 }
-=======
+
 
 
 //$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
->>>>>>> ac0973ad7a0789223ffce051d9e5f8fa584dd767
+
 include('connect-db.php');
 
 
