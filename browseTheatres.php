@@ -24,7 +24,7 @@
     padding: 8px;
 }
 
-#movies tr:nth-child(even){background-color: #f2f2f2;}
+#movies tr:nth-child(even){background-color: #f1f1f1;}
 
 #movies tr:hover {background-color: #ddd;}
 
@@ -32,7 +32,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #333;
     color: white;
 }
 </style>
@@ -42,6 +42,22 @@
 <h1>Browse Movies</h1>
 
 <a href = "movie.php">Browse Movies </a>
+	 <div>
+	 	<?php
+		include('connect-db.php');
+
+        $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+  		$rows->execute();
+
+		$test = $rows->fetch(PDO::FETCH_ASSOC);
+
+		$id    = $test['title'];
+		//$name  = $test[1];
+		//$email = $test[2];
+		print_r($test);
+		echo "<h1>$id</h1>";
+     ?>
+</div>
 
      <table id = "movies">
          <tr>
@@ -54,7 +70,7 @@
 			include('connect-db.php');
 
             $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
-  
+  			
             foreach($rows as $row){
             	echo "<tr>";
 				echo "<td>  <a href= '$row[1].php' >$row[1] </a></td> <td>$row[0]  </td> <td>$row[2]  </td>";

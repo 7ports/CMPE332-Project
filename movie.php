@@ -7,15 +7,20 @@
 <div class="topnav">
   <a href="browseTheatres.php">Browse Theatres</a>
   <a href="CreateAccountPage.php">Create Account</a>
+  <a href="profilepage.php">Account</a>
   <a href="reviewForm.php">Review a Movie</a>
 </div>
 
 
 	<?php
 	    session_start();
+	$accnum = $_SESSION["accnum"];
+	$email = $_SESSION["email"];
+	$accnum = $_SESSION["password"];
+
 
 		include('connect-db.php');
-		$rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+		$rows = $dbh->query("select distinct movie.startDate, movie.title from movie inner join showing on title = movietitle");
 
 
 	    $_SESSION["failed"] = "no";
@@ -46,29 +51,40 @@
             <?php
 			include('connect-db.php');
 
-            $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+            //$rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
   
             foreach($rows as $row){
             	echo "<button class=\"w3-bar-item w3-button tablink\" onclick=\"openLink(event, '$row[1]')\">";
 				echo "$row[1]";
 				echo "</button>";
 			}
+					$rows->execute();
+
+		$test = $rows->fetch(PDO::FETCH_ASSOC);
+
+		$title    = $test['title'];
+		//$name  = $test[1];
+		//$email = $test[2];
+		//print_r($test);
+		//echo "<h1>$id</h1>";
 			?>
 
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Members')">Members</button>
-            <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Movies')">Movies</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Movies')">All Movies</button>
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Theatres')">Movie Theatres</button>
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Complexes')">Movie Complexes</button>
         </div>
                 <div style="margin-left:130px">
-
-            <div id="The Movie Movie" class="w3-container city w3-animate-opacity" style="display:none">
-                <h2>Manage Members</h2>
+			<?php 
+			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
+			?>
+            <!--div id="The Movie Movie" class="w3-container city w3-animate-opacity" style="display:none"-->
+                <h2>Put info about movie here</h2>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>Firstname</th>
+                            <th>buy tix</th>
                             <th>Lastname</th>
                             <th>Account Number</th>
                             <th>Delete Account</th>
@@ -80,11 +96,57 @@
                 </table>
 
             </div>
+            <!-- NEXT MOVIE ENTRY -->
+			<?php 
+			$test = $rows->fetch(PDO::FETCH_ASSOC);
+
+			$title = $test['title'];
+			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
+			echo "<h1>$title</h1>";
+				$showings = $dbh->query("select distinct startTime from movie inner join showing on title = movietitle where title=\"$title\"");
+				echo "<h2>Show Times</h2>";
+				foreach($showings as $show){
+					echo "$show[0]<br>";
+				}
+			?>
+			</div>
+
+			<!-- NEXT MOVIE ENTRY -->
+			<?php 
+			$test = $rows->fetch(PDO::FETCH_ASSOC);
+
+			$title = $test['title'];
+			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
+			echo "<h1>$title</h1>";
+				$showings = $dbh->query("select distinct startTime,numSeatsAvailable, TheatreID from movie inner join showing on title = movietitle where title=\"$title\"");
+				echo "<h2>Show Times</h2>";
+				foreach($showings as $show){
+					echo "$show[0]<br>";
+				}
+			?>
+			</div>
 
             <div id="Movies" class="w3-container city w3-animate-left" style="display:none">
-                <h2>Manage Movies</h2>
-                <p>Paris is the capital of France.</p> 
-                <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
+             <table id = "movies">
+		         <tr>
+		             <th>Name</th>
+		             <th>Date</th>
+		             <th>Time</th>
+		         </tr>
+				<!--tr onclick="window.location='anotherPage.php';"-->
+		            <?php
+					include('connect-db.php');
+
+		            $rows = $dbh->query("select movie.startDate, movie.title, showing.startTime from movie inner join showing on title = movietitle");
+		  
+		            foreach($rows as $row){
+		            	echo "<tr>";
+						echo "<td>  <a onclick=\"openLink(event, '$row[1]')\">$row[1] </a></td> <td>$row[0]  </td> <td>$row[2]  </td>";
+						echo "</tr>";
+					}
+					?>
+				  </tr>
+			  </table> 
             </div>
 
             <div id="Theatres" class="w3-container city w3-animate-top" style="display:none">
