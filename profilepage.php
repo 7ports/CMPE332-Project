@@ -30,14 +30,14 @@ if($email == NULL){
 }
 =======
 
-<<<<<<< HEAD
+
 //$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 >>>>>>> ac0973ad7a0789223ffce051d9e5f8fa584dd767
 include('connect-db.php');
 
-=======
+
 include('connect-db.php');
->>>>>>> 59e9fa0d6dfa06d75ec0bcf2f389fb315bf7d649
+
 
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -81,12 +81,12 @@ $_SESSION["failed"] = "no";
 	</tr>
 	<?php
 	
-<<<<<<< HEAD
+
 	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 
-=======
+
 	include('connect-db.php');
->>>>>>> 59e9fa0d6dfa06d75ec0bcf2f389fb315bf7d649
+
 
 	try{
 	$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -119,12 +119,12 @@ $_SESSION["failed"] = "no";
 	</tr>
 <?php
 	$accnum = $_SESSION["accnum"];
-<<<<<<< HEAD
+
 	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 
-=======
+
 	include('connect-db.php');
->>>>>>> 59e9fa0d6dfa06d75ec0bcf2f389fb315bf7d649
+
 
 	try{
 	$check = $dbh->query("SELECT AccountNum FROM customer WHERE Email = '$email'");
