@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link href="scss/reviewForm.css" type="text/css" rel="stylesheet" >
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+	<link href="scss/header.css" type="text/css" rel="stylesheet" >
+</head>
+
+<body>
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+  <a href="browseTheatres.php">Browse Theatres</a>
+</div>
+
 <body>
 
 <h1>Rervation Confirmation</h1>

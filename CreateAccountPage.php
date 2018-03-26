@@ -9,8 +9,8 @@
 
 <div class="topnav">
   <a href="browseTheatres.php">Browse Theatres</a>
-  <a href="CreateAccountPage.php">Create Account</a>
-  <a href="reviewForm.php">Review a Movie</a>
+    <a href="openingPage.php">Return to Login</a>
+
 </div>
 <body>
 

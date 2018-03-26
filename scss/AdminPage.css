@@ -1,0 +1,22 @@
+#Analytics, #Members {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#Analytics td, #Analytics th, #Members td, #Members th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#Analytics tr,#Members tr:nth-child(even){background-color: #f1f1f1;}
+
+#Analytics tr,#Members tr:hover {background-color: #ddd;}
+
+#Analytics th,#Members th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}

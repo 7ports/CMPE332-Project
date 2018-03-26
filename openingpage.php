@@ -3,7 +3,6 @@
 <head>
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
 	<link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
-
 	<link href="scss/header.css" type="text/css" rel="stylesheet" >
 </head>
 <!-- navigation bar -->
@@ -35,7 +34,7 @@ if ($_SESSION["failed"] == "yes"){
 
 
 <br>
-<a href = "CreateAccountPage.php">Don't have an account? Sign Up! </a>
+<a class="centre" href = "CreateAccountPage.php">Don't have an account? Sign Up! </a>
 
 </body>
 </html>

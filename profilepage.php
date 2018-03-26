@@ -2,14 +2,15 @@
 <html>
 <head>
 	<link href="scss/header.css" type="text/css" rel="stylesheet" >
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+	<link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
 </head>
 <!-- navigation bar -->
 <div class="topnav">
-  <a href="browseTheatres.php">Browse Theatres</a>
-  <a href="profilepage.php">Account</a>
-    <a href="movie.php">Movies</a>
-
   <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+  <a href="browseTheatres.php">Browse Theatres</a>
 </div>
 <style>
 #info {
@@ -52,26 +53,14 @@ if($email == NULL){
 	$email = $_SESSION["email"];
 	$password = $_SESSION["pwrd"];
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 
 
 //$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
-=======
 
-
-<<<<<<< HEAD
-=======
-
-//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
->>>>>>> bfb4cf33af4130c5bbd8898baa075f53d60bfcea
 
 include('connect-db.php');
 
-
-
->>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
 } catch(PDOexception $e){
@@ -120,11 +109,9 @@ if ($rows->fetchColumn(10) != $password){
 	exit;
 } 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
+
 $_SESSION["email"] = $email;
 $_SESSION["pwrd"] = $password;
 
@@ -187,13 +174,7 @@ $_SESSION["failed"] = "no";
 		<th>Number of Tickets</th>
 	</tr>
 <?php
-<<<<<<< HEAD
 	
-=======
->>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
-
-	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
-
 
 	include('connect-db.php');
 
@@ -209,11 +190,8 @@ $_SESSION["failed"] = "no";
 		$accnum = $checks[0];
 	}
 	$_SESSION["accnum"] = $accnum;
-<<<<<<< HEAD
 	
-	
-=======
->>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
+
 	try{
 	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
 	} catch(PDOexception $e){
@@ -234,7 +212,7 @@ $_SESSION["failed"] = "no";
 	?>
 </table>
 <h3>Cancel a Rservation</h3>
-<form action ="/CMPE332-Project/RemoveRes.php" method = "post">
+<form class="accountForm" action ="RemoveRes.php" method = "post">
 	<label for="movietitle">Movie</label>
     <input type="text" name="movietitle" placeholder="Movie">
 	<br>

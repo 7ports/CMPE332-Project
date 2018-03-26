@@ -73,29 +73,23 @@
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Theatres')">Movie Theatres</button>
             <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Complexes')">Movie Complexes</button>
         </div>
-                <div style="margin-left:130px">
+
+        <div style="margin-left:130px">
+		<!-- FIRST MOVIE ENTRY -->
 			<?php 
+
+			$title = $test['title'];
 			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
-
+			echo "<h1>$title</h1>";
+				$showings = $dbh->query("select distinct showing.startTime, showing.startDate, showing.movieTitle, showing.theatreID, theatre.complexName from movie inner join showing on title = movietitle inner join theatre on theatreID = ID where title=\"$title\" ");
+				echo "<h2>Show Times</h2>";
+				foreach($showings as $show){
+					echo "$show[0] <a href=\"makeReservation.php?showTime=$show[0]&startDate=$show[1]
+					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets at</a> $show[4]<br>";
+				}
+				$_SESSION["showTime"] = $show[0];
 			?>
-            <!--div id="The Movie Movie" class="w3-container city w3-animate-opacity" style="display:none"-->
-                <h2>Put info about movie here</h2>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>buy tix</th>
-                            <th>Lastname</th>
-                            <th>Account Number</th>
-                            <th>Delete Account</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-
-                </table>
-
-            </div>
+			</div>
             <!-- NEXT MOVIE ENTRY -->
 			<?php 
 			$test = $rows->fetch(PDO::FETCH_ASSOC);
@@ -103,15 +97,13 @@
 			$title = $test['title'];
 			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
 			echo "<h1>$title</h1>";
-				$showings = $dbh->query("select distinct showing.startTime, showing.startDate, showing.movieTitle, showing.theatreID from movie inner join showing on title = movietitle where title=\"$title\"");
+				$showings = $dbh->query("select distinct showing.startTime, showing.startDate, showing.movieTitle, showing.theatreID, theatre.complexName from movie inner join showing on title = movietitle inner join theatre on theatreID = ID where title=\"$title\" ");
 				echo "<h2>Show Times</h2>";
 				foreach($showings as $show){
 					echo "$show[0] <a href=\"makeReservation.php?showTime=$show[0]&startDate=$show[1]
-					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets </a> <br>";
+					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets at</a> $show[4]<br>";
 				}
 				$_SESSION["showTime"] = $show[0];
-
-
 			?>
 			</div>
 
@@ -122,14 +114,27 @@
 			$title = $test['title'];
 			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
 			echo "<h1>$title</h1>";
-				$showings = $dbh->query("select distinct startTime,numSeatsAvailable, TheatreID from movie inner join showing on title = movietitle where title=\"$title\"");
+				$showings = $dbh->query("select distinct showing.startTime, showing.startDate, showing.movieTitle, showing.theatreID, theatre.complexName from movie inner join showing on title = movietitle inner join theatre on theatreID = ID where title=\"$title\" ");
 				echo "<h2>Show Times</h2>";
 				foreach($showings as $show){
 					echo "$show[0] <a href=\"makeReservation.php?showTime=$show[0]&startDate=$show[1]
-					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets</a> <br>";
+					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets at</a> $show[4]<br>";
 				}
+				$_SESSION["showTime"] = $show[0];
 			?>
 			</div>
+
+            <div id="Theatres" class="w3-container city w3-animate-top" style="display:none">
+                <h2>Manage Movie Theatres</h2>
+                <p>Tokyo is the capital of Japan.</p>
+                <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
+            </div>
+
+            <div id="Complexes" class="w3-container city w3-animate-right" style="display:none">
+                <h2>Manage Movie Complexes</h2>
+                <p>London is the capital city of England.</p>
+                <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+            </div>
 
             <div id="Movies" class="w3-container city w3-animate-left" style="display:none">
 
@@ -153,18 +158,6 @@
 					?>
 				  </tr>
 			  </table> 
-            </div>
-
-            <div id="Theatres" class="w3-container city w3-animate-top" style="display:none">
-                <h2>Manage Movie Theatres</h2>
-                <p>Tokyo is the capital of Japan.</p>
-                <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
-            </div>
-
-            <div id="Complexes" class="w3-container city w3-animate-right" style="display:none">
-                <h2>Manage Movie Complexes</h2>
-                <p>London is the capital city of England.</p>
-                <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
             </div>
         </div>
 

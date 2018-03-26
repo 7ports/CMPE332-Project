@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="scss/header.css" type="text/css" rel="stylesheet" >
-</head>
+    <link href="scss/header.css" type="text/css" rel="stylesheet" >
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+    <link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" ></head>
 <!-- navigation bar -->
 <div class="topnav">
-  <a href="browseTheatres.php">Browse Theatres</a>
-  <a href="profilepage.php">Account</a>
-    <a href="movie.php">Movies</a>
-
   <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+  <a href="browseTheatres.php">Browse Theatres</a>
 </div>
 <body>
 
@@ -29,9 +29,6 @@ $AccountNum = $_SESSION["AccountNum"];
 $Password = $_SESSION["Password"];
 $creditCardNum = $_SESSION["creditCardNum"];
 $creditCardExpiryDate = $_SESSION["creditCardExpiryDate"];
-
-echo $Fname;
-echo $Lname;
 
 
 ?>
