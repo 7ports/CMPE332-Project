@@ -13,10 +13,10 @@
 
 
 	<?php
-	    session_start();
+	session_start();
 	$accnum = $_SESSION["accnum"];
 	$email = $_SESSION["email"];
-	$accnum = $_SESSION["password"];
+	$password = $_SESSION["password"];
 
 
 		include('connect-db.php');
@@ -77,6 +77,7 @@
                 <div style="margin-left:130px">
 			<?php 
 			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
+
 			?>
             <!--div id="The Movie Movie" class="w3-container city w3-animate-opacity" style="display:none"-->
                 <h2>Put info about movie here</h2>
@@ -103,11 +104,15 @@
 			$title = $test['title'];
 			echo "<div id=\"$title\"class=\"w3-container city w3-animate-opacity\" style=\"display:none\">"; 
 			echo "<h1>$title</h1>";
-				$showings = $dbh->query("select distinct startTime from movie inner join showing on title = movietitle where title=\"$title\"");
+				$showings = $dbh->query("select distinct showing.startTime, showing.startDate, showing.movieTitle, showing.theatreID from movie inner join showing on title = movietitle where title=\"$title\"");
 				echo "<h2>Show Times</h2>";
 				foreach($showings as $show){
-					echo "$show[0]<br>";
+					echo "$show[0] <a href=\"makeReservation.php?showTime=$show[0]&startDate=$show[1]
+					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets </a> <br>";
 				}
+				$_SESSION["showTime"] = $show[0];
+
+
 			?>
 			</div>
 
@@ -121,12 +126,14 @@
 				$showings = $dbh->query("select distinct startTime,numSeatsAvailable, TheatreID from movie inner join showing on title = movietitle where title=\"$title\"");
 				echo "<h2>Show Times</h2>";
 				foreach($showings as $show){
-					echo "$show[0]<br>";
+					echo "$show[0] <a href=\"makeReservation.php?showTime=$show[0]&startDate=$show[1]
+					&movietitle=$show[2]&theatreID=$show[3]\">Reserve tickets</a> <br>";
 				}
 			?>
 			</div>
 
             <div id="Movies" class="w3-container city w3-animate-left" style="display:none">
+
              <table id = "movies">
 		         <tr>
 		             <th>Name</th>

@@ -23,18 +23,33 @@ session_start();
 $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 328ec593d1a54e37c357e0923c60ad0b64c62be3
 if($email == NULL){
+	echo "using session";
 	$email = $_SESSION["email"];
 	$password = $_SESSION["pwrd"];
 }
-
+<<<<<<< HEAD
 
 
 //$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+=======
 
+
+<<<<<<< HEAD
+=======
+
+//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
+>>>>>>> 328ec593d1a54e37c357e0923c60ad0b64c62be3
 include('connect-db.php');
 
+
+
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
 } catch(PDOexception $e){
@@ -83,8 +98,11 @@ if ($rows->fetchColumn(10) != $password){
 	exit;
 } 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 $_SESSION["email"] = $email;
 $_SESSION["pwrd"] = $password;
 
@@ -147,7 +165,10 @@ $_SESSION["failed"] = "no";
 		<th>Number of Tickets</th>
 	</tr>
 <?php
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 
 	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 
@@ -166,17 +187,18 @@ $_SESSION["failed"] = "no";
 		$accnum = $checks[0];
 	}
 	$_SESSION["accnum"] = $accnum;
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 	try{
 	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
 	} catch(PDOexception $e){
 	print "Error!: " . $e->getMessage()."<br/>";
 	die();
 	}
-	
-	
-	
+
 	
 	foreach($rows as $row){
 	echo "<tr>
