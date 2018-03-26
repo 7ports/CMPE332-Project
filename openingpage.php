@@ -11,7 +11,7 @@
 		<label for="email">Email address</label>
         <input type="text" name="email" placeholder="Email">
 		<br>
-		<label for="pwrd">Email address</label>
+		<label for="pwrd">Password</label>
         <input type="password" name="pwrd" placeholder="Password">
 		<br>
 		<button type="submit" class="btn btn-default">Login</button>

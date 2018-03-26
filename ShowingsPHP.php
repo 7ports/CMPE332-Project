@@ -1,14 +1,9 @@
 <!--Create and Edit Showings Page-->
 
-
-<!--Not working!! References Foreign key and restricts update??-->
-
 <!DOCTYPE html>
 <html>
     <body>
         <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
-        
-        <h1>PHP Page</h1>
         <a href = "AdminPage.php">Back to Admin Portal </a>
 
         <?php

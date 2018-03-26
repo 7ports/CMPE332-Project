@@ -116,6 +116,15 @@
                     </form>
 
                 </div>
+                
+                <h2>Check Reservation History of Specific User</h2>
+                <form action="/CMPE332-Project/ReservationHistoryPage.php" method="post">
+                    <div class="form-group">
+                        <label for="reservationHistory">Account Number</label>
+                        <input type="number" class="form-control" name="reservationHistory" placeholder="Account Number">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
             </div>
 
             <div id="Movies" class="w3-container city w3-animate-opacity" style="display:none">
