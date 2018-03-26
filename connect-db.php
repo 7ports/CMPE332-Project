@@ -12,11 +12,11 @@ $db = 'MovieTheatres';
 // show errors (remove this line if on a live site)
 mysqli_report(MYSQLI_REPORT_ERROR);
 
-$dbh = new PDO('mysql:host=localhost;dbname=MovieTheatres',"root","root"); // for Sar
+//$dbh = new PDO('mysql:host=localhost;dbname=MovieTheatres',"root","root"); // for Sar
 // change to 
-// $dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", ""); for Nat
+// $dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", ""); //for Nat
 // change to 
-// $dbh = new PDO('mysql:host=localhost;dbname=movietheaters', "root", ""); for Raj
+ $dbh = new PDO('mysql:host=localhost;dbname=movietheaters', "root", ""); //for Raj
 
 ?>
 
