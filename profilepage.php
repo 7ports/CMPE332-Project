@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link href="scss/header.css" type="text/css" rel="stylesheet" >
+</head>
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="browseTheatres.php">Browse Theatres</a>
+  <a href="profilepage.php">Account</a>
+    <a href="movie.php">Movies</a>
+
+  <a href="reviewForm.php">Review a Movie</a>
+</div>
 <body>
 
 <h1>Your Profile</h1>
@@ -13,7 +24,20 @@ $email = $_POST["email"];
 $password = $_POST["pwrd"];
 
 
+if($email == NULL){
+	$email = $_SESSION["email"];
+	$password = $_SESSION["pwrd"];
+}
+
+
+
+//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
 include('connect-db.php');
+
+
+include('connect-db.php');
+
 
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -35,6 +59,9 @@ if ($rows->fetchColumn(10) != $password){
 } 
 
 $_SESSION["accnum"] = $rows->fetchColumn(9);
+$_SESSION["email"] = $email;
+$_SESSION["pwrd"] = $password;
+
 
 	
 $_SESSION["failed"] = "no";
@@ -54,7 +81,12 @@ $_SESSION["failed"] = "no";
 	</tr>
 	<?php
 	
+
+	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
+
 	include('connect-db.php');
+
 
 	try{
 	$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -87,7 +119,12 @@ $_SESSION["failed"] = "no";
 	</tr>
 <?php
 	$accnum = $_SESSION["accnum"];
+
+	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+
+
 	include('connect-db.php');
+
 
 	try{
 	$check = $dbh->query("SELECT AccountNum FROM customer WHERE Email = '$email'");
@@ -125,4 +162,7 @@ $_SESSION["failed"] = "no";
 
 
 </body>
+<?php
+	//$accnum = $_SESSION["accnum"]=$;
+?>
 </html>

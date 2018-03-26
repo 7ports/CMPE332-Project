@@ -20,9 +20,8 @@
 	</form>
 <?php
 session_start();
-$status = $_SESSION["failed"];
 
-if ($status == "yes"){
+if ($_SESSION["failed"] == "yes"){
 	echo "Invalid Login Info!"; 
 }
 ?>
