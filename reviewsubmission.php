@@ -19,7 +19,7 @@ echo $moviename;
 echo $rating;
 echo $comments;
 echo $accnum;
-echo rand();
+echo rand(10000,99999);
 
 include('connect-db.php');
 
