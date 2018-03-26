@@ -26,7 +26,6 @@
 	$_SESSION["movieTitle"]=$movieTitle;
 	$_SESSION["startDate"]=$startDate;
 	$_SESSION["theatreID"]=$theatreID;
-
 	$accnum = $_SESSION["accnum"];
 
 

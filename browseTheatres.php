@@ -4,11 +4,12 @@
         <link href="scss/header.css" type="text/css" rel="stylesheet" >
 
     </head>
-
+<!-- navigation bar -->
 <div class="topnav">
-  <a href="browseTheatres.php">Browse Theatres</a>
-  <a href="CreateAccountPage.php">Create Account</a>
   <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+  <a href="browseTheatres.php">Browse Theatres</a>
 </div>
 
 <body>

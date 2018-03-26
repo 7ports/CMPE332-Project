@@ -23,7 +23,6 @@
 
 <?php
 session_start();
-$_SESSION["accnum"] = "0";
 ?>
 <form class = "reviewMovie" action = "/CMPE332-Project/reviewsubmission.php" method = "post" id = "reviewform">
     <label for="Movie">Movie</label>

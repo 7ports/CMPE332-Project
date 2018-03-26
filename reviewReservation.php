@@ -43,7 +43,8 @@ echo "Account: $accnum<br>";
 include('connect-db.php');
 
 try{
-$dbh->exec("INSERT INTO Reservation (`startTime`, `startDate`, `MovieTitle`, `TheatreID`, `AccountNum`, `numTickets`) VALUES ('$startTime', '$startDate', '$movieTitle', '$TheatreID','$accnum', '$numTickets')");
+$dbh->exec("INSERT INTO Reservation (`startTime`, `startDate`, `MovieTitle`, `TheatreID`, `AccountNum`, `numTickets`) 
+	VALUES ('$startTime', '$startDate', '$movieTitle', '$theatreID','$accnum', '$numTickets')");
 } catch(PDOexception $e){
 	print "Error!: " . $e->getMessage()."<br/>";
 	die();

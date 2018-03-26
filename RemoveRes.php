@@ -44,7 +44,5 @@ $rows = $dbh->exec("DELETE FROM reservation WHERE startTime='$time' AND movieTit
 
 ?>
 
-
-
 </body>
 </html>

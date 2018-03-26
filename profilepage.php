@@ -5,13 +5,7 @@
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
 	<link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
 </head>
-<!-- navigation bar -->
-<div class="topnav">
-  <a href="reviewForm.php">Review a Movie</a>
-  <a href="profilepage.php">Account</a>
-  <a href="movie.php">Browse Movies</a>
-  <a href="browseTheatres.php">Browse Theatres</a>
-</div>
+
 <style>
 #info {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -36,13 +30,12 @@
     color: white;
 }
 </style>
-
-<body>
-
-<h1>Your Profile</h1>
-
-
-
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+  <a href="browseTheatres.php">Browse Theatres</a>
 
 <?php
 session_start();
@@ -115,11 +108,27 @@ if ($rows->fetchColumn(10) != $password){
 $_SESSION["email"] = $email;
 $_SESSION["pwrd"] = $password;
 
+//<!-- navigation bar -->
+if($email == "admin@email.ca"){
+	//echo $email;
+//echo "<div class=\"topnav\">";
+//echo "<a href=\"reviewForm.php\">Review a Movie</a>"; 
+//echo "<a href=\"profilepage.php\">Account</a>";  
+//echo "  <a href=\"movie.php\">Browse Movies</a>";  
+echo "  <a href=\"AdminPage.php\">Administration</a>";
+echo "</div>";	
+} else{
+	echo "</div>";
+}
 
-	
+
 $_SESSION["failed"] = "no";
 	
 ?>
+
+<body>
+
+<h1>Your Profile</h1>
 
 <h2>Your Info</h2>
 <table id="info">
@@ -193,7 +202,7 @@ $_SESSION["failed"] = "no";
 	
 
 	try{
-	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
+	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre on theatreID=ID WHERE AccountNum = '$accnum'");
 	} catch(PDOexception $e){
 	print "Error!: " . $e->getMessage()."<br/>";
 	die();
@@ -211,8 +220,8 @@ $_SESSION["failed"] = "no";
 	}
 	?>
 </table>
-<h3>Cancel a Rservation</h3>
-<form class="accountForm" action ="RemoveRes.php" method = "post">
+<h3>Cancel a Reservation</h3>
+<form class="accountForm" action ="/CMPE332-Project/RemoveRes.php" method = "post">
 	<label for="movietitle">Movie</label>
     <input type="text" name="movietitle" placeholder="Movie">
 	<br>
