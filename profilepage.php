@@ -52,10 +52,60 @@ if($email == NULL){
 	$email = $_SESSION["email"];
 	$password = $_SESSION["pwrd"];
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+
+//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+=======
+
+
+<<<<<<< HEAD
+=======
+
+//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
+>>>>>>> bfb4cf33af4130c5bbd8898baa075f53d60bfcea
 
 include('connect-db.php');
 
 
+
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
+try{
+$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
+} catch(PDOexception $e){
+	print "Error!: " . $e->getMessage()."<br/>";
+	die();
+}
+foreach($rows as $row){
+$_SESSION["Fname"] = $row[0];
+$_SESSION["Lname"] = $row[1];
+$_SESSION["addressNum"] = $row[2];
+$_SESSION["Street"] = $row[3];
+$_SESSION["City"] = $row[4];
+$_SESSION["Prov"] = $row[5];
+$_SESSION["Country"] = $row[6];
+$_SESSION["PC"] = $row[7];
+$_SESSION["phoneNumber"] = $row[8];
+$_SESSION["AccountNum"] = $row[9];
+$_SESSION["Password"] = $row[10];
+$_SESSION["creditCardNum"] = $row[11];
+$_SESSION["creditCardExpiryDate"] = $row[12];	
+}
+try{
+$rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
+} catch(PDOexception $e){
+	print "Error!: " . $e->getMessage()."<br/>";
+	die();
+}
+
+
+if($rows->rowCount() == 0){
+	$_SESSION["failed"] = "yes";
+	header("Location:openingpage.php");
+	exit;
+}
 
 try{
 $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Country, PC, phoneNumber, AccountNum, Password, creditCardNum, creditCardExpiryDate FROM customer WHERE Email = '$email'");
@@ -64,18 +114,17 @@ $rows = $dbh->query("SELECT Fname, Lname, addressNum, Street, City, Prov, Countr
 	die();
 }
 
-if($rows->rowCount() == 0){
-	$_SESSION["failed"] = "yes";
-	header("Location:openingpage.php");
-	exit;
-}
-
 if ($rows->fetchColumn(10) != $password){
 	$_SESSION["failed"] = "yes";
 	header("Location:openingpage.php");
 	exit;
 } 
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 $_SESSION["email"] = $email;
 $_SESSION["pwrd"] = $password;
 
@@ -125,6 +174,9 @@ $_SESSION["failed"] = "no";
 	}
 	?>
 </table>
+
+<a href = "changeprofile.php">Edit Your Profile</a>
+
 <h3>Your Reservations</h3>
 <table id="info">
 	<tr>
@@ -135,6 +187,10 @@ $_SESSION["failed"] = "no";
 		<th>Number of Tickets</th>
 	</tr>
 <?php
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 
 	//$dbh = new PDO('mysql:host=localhost;dbname=movietheaters',"root","");
 
@@ -153,6 +209,11 @@ $_SESSION["failed"] = "no";
 		$accnum = $checks[0];
 	}
 	$_SESSION["accnum"] = $accnum;
+<<<<<<< HEAD
+	
+	
+=======
+>>>>>>> 168840f373f90f7d44db434bc0fc3502480a0111
 	try{
 	$rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
 	} catch(PDOexception $e){
@@ -172,7 +233,21 @@ $_SESSION["failed"] = "no";
 	}
 	?>
 </table>
-
+<h3>Cancel a Rservation</h3>
+<form action ="/CMPE332-Project/RemoveRes.php" method = "post">
+	<label for="movietitle">Movie</label>
+    <input type="text" name="movietitle" placeholder="Movie">
+	<br>
+	<label for="time">Start Time</label>
+    <input type="time" name="time" placeholder="Time">
+	<br>
+	<label for="theatre">Theatre Name</label>
+    <input type="text" name="theatre" placeholder="Theatre">
+	<label for="theatrenum">Theatre Number</label>
+    <input type="text" name="theatrenum" placeholder="Theatre Number">
+	<br>
+	<button type="submit" class="btn btn-default">Cancel Reservation</button>
+</form>
 
 
 </body>
