@@ -48,7 +48,7 @@
             }
 
             try{
-                $rows = $dbh->query("SELECT startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre WHERE AccountNum = '$accnum'");
+                $rows = $dbh->query("SELECT distinct startTime, startDate, MovieTitle, TheatreNum, ComplexName, numTickets FROM reservation INNER JOIN theatre on theatreID=ID WHERE AccountNum = '$accnum'");
             } catch(PDOexception $e){
                 print "Error!: " . $e->getMessage()."<br/>";
                 die();

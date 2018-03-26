@@ -2,7 +2,17 @@
 
 <!DOCTYPE html>
 <html>
-
+<head>
+    <link href="scss/header.css" type="text/css" rel="stylesheet" >
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" >
+    <link href="scss/CreateAccountPage.css" type="text/css" rel="stylesheet" >
+</head>
+<!-- navigation bar -->
+<div class="topnav">
+  <a href="reviewForm.php">Review a Movie</a>
+  <a href="profilepage.php">Account</a>
+  <a href="movie.php">Browse Movies</a>
+</div>
     <?php
     session_start();
     /*

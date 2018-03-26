@@ -25,6 +25,11 @@
 		
 	</form>
 <?php
+        session_unset(); 
+
+// destroy the session 
+session_destroy();
+
 session_start();
 
 if ($_SESSION["failed"] == "yes"){

@@ -9,7 +9,6 @@
   <a href="reviewForm.php">Review a Movie</a>
   <a href="profilepage.php">Account</a>
   <a href="movie.php">Browse Movies</a>
-  <a href="browseTheatres.php">Browse Theatres</a>
 </div>
 <body>
 
@@ -44,7 +43,7 @@ $creditCardExpiryDate = $_SESSION["creditCardExpiryDate"];
 
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="text" class="form-control" name="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" name="inputPassword" placeholder="Password">
             </div>
 
             <div class="form-group">

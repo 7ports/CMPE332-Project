@@ -15,8 +15,8 @@
         echo $DeleteInput;
         //echo accountNum;
         
-        $dbh = new PDO('mysql:host=localhost;dbname=movietheatres', "root", "");
-        // set the PDO error mode to exception
+        include('connect-db.php');
+       // set the PDO error mode to exception
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         try{

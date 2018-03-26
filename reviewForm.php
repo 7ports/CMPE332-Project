@@ -12,12 +12,10 @@
   <a href="reviewForm.php">Review a Movie</a>
   <a href="profilepage.php">Account</a>
   <a href="movie.php">Browse Movies</a>
-  <a href="browseTheatres.php">Browse Theatres</a>
 </div>
 
 
 <h1>MovieTheaters</h1>
-<a href = "browseTheatres.html">Browse Movies </a>
 
 <h1>ReviewForm</h1>
 
